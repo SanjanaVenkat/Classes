@@ -1,9 +1,12 @@
 #include <iostream>
-#include <videogames.h>
-#include <music.h>
-#include <movies.h>
+#include <cstring>
+#include "videogames.h"
+#include "movies.h"
+#include "music.h"
+#include "parent.h"
 
 using namespace std;
+
 
 void getResponse(char response[10]) {
   bool running = true;
@@ -20,10 +23,12 @@ char response[10];
   while (running == true) {
  if (response[0] == 'A'&& response[1] == 'D' && response[2] == 'D') {
    cout << "Running add loop" << endl;
+  addMedia();
    getResponse(response);
  }
  else if (response[0] == 'S' && response[1] == 'E' && response[2] == 'A' && response[3] == 'R' && response[4] == 'C' && response[5] == 'H') {
    cout << "Running search loop" << endl;
+   searchMedia();
    getResponse(response);
  }
  else if (response[0] == 'D' && response[1] == 'E' && response[2] == 'L' && response[3] == 'E' && response[4] == 'T' && response[5] == 'E') {
