@@ -6,6 +6,9 @@ using namespace std;
 //void addMedia();
 //void searchMedia();
 
+#ifndef PARENT_H
+#define PARENT_H
+
 //media class (where all three medias have an overlap)
 class media {
  public:
@@ -20,6 +23,10 @@ class media {
   int year;
   char title[100];
 };
+
+
+#endif
+/*
 //movie class
 class movie: public media {
   public:
@@ -72,4 +79,4 @@ class videogame: public media {
 };
 
 
-
+*/

@@ -10,43 +10,12 @@ using namespace std;
 int media::getType() {
   return 0;
 }
-int videogame::getType() {
-  return 1;
-}
-int music::getType() {
-  return 2;
-}
-int movie::getType() {
-  return 3;
-}
 //constructors and destructors
 media::media() {
 
 }
 
 media::~media() {
-
-}
-movie::movie() {
-
-}
-
-movie::~movie() {
-
-}
-music::music() {
-
-}
-
-music::~music() {
-
-}
-
-videogame::videogame() {
-
-}
-
-videogame::~videogame() {
 
 }
 
@@ -68,6 +37,7 @@ char* media::getTitle() {
 int media::getYear() {
   return year;
 }
+/*
 //movie functions
 void movie::setDirector(char di[]) {
   strcpy(director, di);
@@ -133,3 +103,4 @@ char* videogame::getRating() {
   return rating;
 }
 
+*/

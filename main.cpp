@@ -4,9 +4,9 @@
 #include <iostream>
 #include <cstring>
 #include "parent.h"
-//#include "videogames.h"
-//#include "movies.h"
-//#include "music.h"
+#include "videogames.h"
+#include "movies.h"
+#include "music.h"
 #include <vector>
 
 using namespace std;
@@ -42,7 +42,6 @@ void addMedia(vector <media*>* medialist) {
   v->setRating(ra);
   v->getType();
   medialist->push_back(v);
-  cout << v->getType() << endl;
   }
   //adds music
   else if (mediatype[0] == '2') {
@@ -123,7 +122,7 @@ void addMedia(vector <media*>* medialist) {
 void deleteMedia(vector <media*>* medialist) {
   int index = -1;
   char searchtype[3];
-    cout << "Enter 1 if you want to search by title, or 2 if you want to search\
+    cout << "Enter 1 if you want to delete by title, or 2 if you want to delete\
  by year" << endl;
     cin >> searchtype;
     //deletes media based on title
@@ -136,7 +135,8 @@ void deleteMedia(vector <media*>* medialist) {
       music* mu;
       movie* mo;
       bool foundt = true;
-       while (foundt) {
+       do {
+	 foundt = false;
    index = -1;
    //runs through all media looking for what to delete
   for (int i = 0; i < medialist->size(); i++) {
@@ -160,24 +160,36 @@ void deleteMedia(vector <media*>* medialist) {
 
     if (m->getType() == 3) {
       mo = (movie*)m;
-      if (strcmp(inputstr, mo->getTitle())) {
+      if (strcmp(inputstr, mo->getTitle()) == 0) {
         index = i;
         break;
       }
-    }
-    //delets
+    } 
+    //deletes
+    /*
     if (index > -1) {
       foundt = true;
       //delete *medialist[i];
       medialist->erase(medialist->begin()+index);
+      cout << "Deleted" << endl;
     }
-    else {
-      foundt = false;
-    }
+    */
+
+  }
+  if (index > -1) {
+      foundt = true;
+      delete (*medialist)[index];
+      medialist->erase(medialist->begin()+index);
+      index = -1;
   }
 
- }
+
+       } while(foundt);
     }
+
+
+
+    
     //does the same as above, except deletes by year
     else if (searchtype[0] == '2') {
       int input = 0;
@@ -188,7 +200,8 @@ void deleteMedia(vector <media*>* medialist) {
  music* mu;
  movie* mo;
  bool foundy = true;
- while (foundy) {
+ do {
+   foundy = false;
    index = -1;
   for (int i = 0; i < medialist->size(); i++) {
     media* m = (*medialist)[i];
@@ -216,17 +229,26 @@ void deleteMedia(vector <media*>* medialist) {
 	break;
       }
     }
+    /*
     if (index > -1) {
+      cout << "deleting" << endl;
       foundy = true;
       //delete *medialist[i];
       medialist->erase(medialist->begin()+index);
+      
+      index = -1;
     }
-    else {
-      foundy = false;
-    }
+*/   
   }
+    if (index > -1) {
+      foundy = true;
+      delete (*medialist)[index];
+      medialist->erase(medialist->begin()+index);
 
- }
+      index = -1;
+    }
+
+ } while (foundy);
 
     }
     else {

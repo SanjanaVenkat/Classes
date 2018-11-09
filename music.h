@@ -1,11 +1,32 @@
 #include <iostream>
+#include <cstring>
+#include "parent.h"
 
 using namespace std;
 
-class music {
- public:
-  int year;
-  char title[100];
- private:
-  int test;
+#ifndef MUSIC_H
+#define MUSIC_H
+
+//music class
+class music: public media {
+  public:
+  music();
+  ~music();
+  void setArtist(char a[]);
+  void setDuration(int du);
+  void setPublisher(char p[]);
+  char* getArtist();
+  int getDuration();
+  char* getPublisher();
+  int getType();
+  private:
+  char artist[100];
+  int duration;
+  char publisher[100];
 };
+
+
+#endif
+
+
+
